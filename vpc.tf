@@ -75,3 +75,12 @@ resource "aws_subnet" "privateSubnet-4" {
     Name = "privateSubnet-4"
   }
 }
+
+#internet gateway
+resource "aws_internet_gateway" "ig" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = Internet-gateway
+  }
+}
