@@ -20,7 +20,7 @@ resource "aws_security_group" "internal-alb" {
   security_group_id = aws_security_group.internal-alb.id
 }
 
- resource "aws_security_group_rule" "allow_nginx_port80" {
+ resource "aws_security_group_rule" "allow_nginx_port443" {
   type              = "ingress"
   from_port         = 443
   to_port           = 443
