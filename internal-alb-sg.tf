@@ -29,7 +29,7 @@ resource "aws_security_group" "internal-alb" {
   security_group_id = aws_security_group.internal-alb.id
 }
 
-resource "aws_security_group_rule" "public_out" {
+resource "aws_security_group_rule" "public_out_internal_alb" {
   type        = "egress"
   from_port   = 0
   to_port     = 0

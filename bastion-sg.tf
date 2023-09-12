@@ -29,7 +29,7 @@ resource "aws_security_group" "bastion-sg" {
   security_group_id = aws_security_group.bastion-sg.id
 }
 
-resource "aws_security_group_rule" "public_out" {
+resource "aws_security_group_rule" "public_out_bastion" {
   type        = "egress"
   from_port   = 0
   to_port     = 0
