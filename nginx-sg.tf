@@ -1,5 +1,5 @@
 resource "aws_security_group" "nginx-sg" {
-  name        = "p15-nginx-sg"
+  name        = "nginx-sg"
   vpc_id      = aws_vpc.main.id
   description = "Nginx SG"
 

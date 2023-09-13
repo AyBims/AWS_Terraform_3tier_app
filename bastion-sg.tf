@@ -1,7 +1,7 @@
 # Internal alb Security Group
 resource "aws_security_group" "bastion-sg" {
   name = "bastion-sg"
-  description = "Internal ALB"
+  description = "Bastion SG"
   vpc_id = aws_vpc.main.id
  
   tags = {
