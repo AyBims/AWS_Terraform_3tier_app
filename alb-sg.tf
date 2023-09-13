@@ -1,5 +1,5 @@
 # external alb Security Group
-resource "aws_security_group" "external-alb" {
+resource "aws_security_group" "external-alb-sg" {
   name = "external-alb-sg"
   description = "Public internet access"
   vpc_id = aws_vpc.main.id
@@ -17,7 +17,7 @@ resource "aws_security_group" "external-alb" {
   to_port           = 80
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.external-alb.id
+  security_group_id = aws_security_group.external-alb-sg.id
 }
 resource "aws_security_group_rule" "public_out_external_alb" {
   type        = "egress"
@@ -26,7 +26,7 @@ resource "aws_security_group_rule" "public_out_external_alb" {
   protocol    = "-1"
   cidr_blocks = ["0.0.0.0/0"]
  
-  security_group_id = aws_security_group.external-alb.id
+  security_group_id = aws_security_group.external-alb-sg.id
 }
  
 
@@ -34,7 +34,7 @@ resource "aws_security_group_rule" "public_out_external_alb" {
  
 
 # Internal alb Security Group
-resource "aws_security_group" "internal-alb" {
+resource "aws_security_group" "internal-alb-sg" {
   name = "internal-alb-sg"
   description = "Internal ALB"
   vpc_id = aws_vpc.main.id
@@ -52,7 +52,7 @@ resource "aws_security_group" "internal-alb" {
   to_port           = 80
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.internal-alb.id
+  security_group_id = aws_security_group.internal-alb-sg.id
 }
 
  resource "aws_security_group_rule" "allow_nginx_port443" {
@@ -61,7 +61,7 @@ resource "aws_security_group" "internal-alb" {
   to_port           = 443
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.internal-alb.id
+  security_group_id = aws_security_group.internal-alb-sg.id
 }
 
 resource "aws_security_group_rule" "public_out_internal_alb" {
@@ -71,7 +71,7 @@ resource "aws_security_group_rule" "public_out_internal_alb" {
   protocol    = "-1"
   cidr_blocks = ["0.0.0.0/0"]
  
-  security_group_id = aws_security_group.internal-alb.id
+  security_group_id = aws_security_group.internal-alb-sg.id
 }
  
  
