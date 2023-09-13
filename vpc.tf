@@ -157,22 +157,22 @@ resource "aws_route" "private-rt-route" {
 
 
 resource "aws_route_table_association" "private-subnets-assoc-1" {
-  subnet_id      = aws_subnet.PrivateSubnet-1.id
+  subnet_id      = aws_subnet.privateSubnet-1.id
   route_table_id = aws_route_table.private-rt.id
 }
 
 
 resource "aws_route_table_association" "private-subnets-assoc-2" {
-  subnet_id      = aws_subnet.PrivateSubnet-2.id
+  subnet_id      = aws_subnet.privateSubnet-2.id
   route_table_id = aws_route_table.private-rt.id
 }
 
 resource "aws_route_table_association" "private-subnets-assoc-3" {
-  subnet_id      = aws_subnet.PrivateSubnet-3.id
+  subnet_id      = aws_subnet.privateSubnet-3.id
   route_table_id = aws_route_table.private-rt.id
 }
 
 resource "aws_route_table_association" "private-subnets-assoc-4" {
-  subnet_id      = aws_subnet.PrivateSubnet-4.id
+  subnet_id      = aws_subnet.privateSubnet-4.id
   route_table_id = aws_route_table.private-rt.id
 }
