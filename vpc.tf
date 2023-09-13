@@ -76,11 +76,34 @@ resource "aws_subnet" "privateSubnet-4" {
   }
 }
 
-#internet gateway
+# Internet gateway
 resource "aws_internet_gateway" "ig" {
   vpc_id = aws_vpc.main.id
 
   tags = {
     Name = "Internet-gateway"
+  }
+}
+
+# NAT Gateway and elastic IP address
+resource "aws_eip" "nat_eip" {
+  vpc        = true
+  depends_on = [aws_internet_gateway.ig]
+
+
+  tags = {
+    Name            = "nat-eip"
+  }
+}
+
+
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.nat_eip.id
+  subnet_id     = aws_subnet.publicSubnet-1.id
+  depends_on    = [aws_internet_gateway.ig]
+
+
+  tags = {
+    Name            = "main-nat"
   }
 }
