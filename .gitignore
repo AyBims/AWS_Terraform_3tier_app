@@ -35,3 +35,4 @@ terraform.rc
 
 .terraform.lock.hcl
 .vscode
+devops.pem
