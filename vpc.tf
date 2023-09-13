@@ -119,7 +119,7 @@ resource "aws_route_table" "public-rt" {
   }
 }
 
-# route table association
+# route table association for public subnets
 resource "aws_route" "public-rt-route" {
   route_table_id         = aws_route_table.public-rt.id
   destination_cidr_block = "0.0.0.0/0"
@@ -137,3 +137,42 @@ resource "aws_route_table_association" "public-subnets-assoc-2" {
   route_table_id = aws_route_table.public-rt.id
 }
 
+
+
+# private route table
+resource "aws_route_table" "private-rt" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name            = "Private-Route-Table"
+  }
+}
+
+# route table association for private subnet
+resource "aws_route" "private-rt-route" {
+  route_table_id         = aws_route_table.private-rt.id
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id         = aws_nat_gateway.nat.id
+}
+
+
+resource "aws_route_table_association" "private-subnets-assoc-1" {
+  subnet_id      = aws_subnet.PrivateSubnet-1.id
+  route_table_id = aws_route_table.private-rt.id
+}
+
+
+resource "aws_route_table_association" "private-subnets-assoc-2" {
+  subnet_id      = aws_subnet.PrivateSubnet-2.id
+  route_table_id = aws_route_table.private-rt.id
+}
+
+resource "aws_route_table_association" "private-subnets-assoc-3" {
+  subnet_id      = aws_subnet.PrivateSubnet-3.id
+  route_table_id = aws_route_table.private-rt.id
+}
+
+resource "aws_route_table_association" "private-subnets-assoc-4" {
+  subnet_id      = aws_subnet.PrivateSubnet-4.id
+  route_table_id = aws_route_table.private-rt.id
+}
