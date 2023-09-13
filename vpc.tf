@@ -107,3 +107,33 @@ resource "aws_nat_gateway" "nat" {
     Name            = "main-nat"
   }
 }
+
+
+
+# route table for public subnets
+resource "aws_route_table" "public-rt" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name            = "Public-Route-Table"
+  }
+}
+
+# route table association
+resource "aws_route" "public-rt-route" {
+  route_table_id         = aws_route_table.public-rt.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.ig.id
+}
+
+
+resource "aws_route_table_association" "public-subnets-assoc-1" {
+  subnet_id      = aws_subnet.publicSubnet-1.id
+  route_table_id = aws_route_table.public-rt.id
+}
+
+resource "aws_route_table_association" "public-subnets-assoc-2" {
+  subnet_id      = aws_subnet.publicSubnet-2.id
+  route_table_id = aws_route_table.public-rt.id
+}
+
