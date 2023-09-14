@@ -8,8 +8,8 @@ resource "aws_autoscaling_group" "bastion-asg" {
   desired_capacity          = 1
 
   vpc_zone_identifier = [
-    aws_subnet.PublicSubnet-1.id,
-    aws_subnet.PublicSubnet-2.id
+    aws_subnet.privateSubnet-1.id,
+    aws_subnet.publicSubnet-2.id
   ]
 
 
@@ -36,8 +36,8 @@ resource "aws_autoscaling_group" "nginx-asg" {
   desired_capacity          = 1
 
   vpc_zone_identifier = [
-    aws_subnet.PrivateSubnet-1.id,
-    aws_subnet.PrivateSubnet-2.id
+    aws_subnet.privateSubnet-1.id,
+    aws_subnet.privateSubnet-2.id
   ]
 
 
