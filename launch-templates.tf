@@ -12,7 +12,7 @@ resource "aws_launch_template" "bastion-launch-template" {
   }
 
 
-  image_id = ""
+  image_id = "ami-026ebd4cfe2c043b2"
 
   instance_initiated_shutdown_behavior = "terminate"
 
@@ -61,7 +61,7 @@ resource "aws_launch_template" "nginx-launch-template" {
   }
 
 
-  image_id = ""
+  image_id = "ami-026ebd4cfe2c043b2"
 
   instance_initiated_shutdown_behavior = "terminate"
 
@@ -108,7 +108,7 @@ resource "aws_launch_template" "tooling-launch-template" {
   }
 
 
-  image_id = ""
+  image_id = "ami-026ebd4cfe2c043b2"
 
   instance_initiated_shutdown_behavior = "terminate"
 
@@ -154,7 +154,7 @@ resource "aws_launch_template" "wordpress-launch-template" {
   }
 
 
-  image_id = ""
+  image_id = "ami-026ebd4cfe2c043b2"
 
   instance_initiated_shutdown_behavior = "terminate"
 
